@@ -33,6 +33,7 @@ try
 
 //$pro_code=$_GET['procode'];
 $cart=$_SESSION['cart'];
+$max=count($cart);
 
 $dsn='mysql:dbname=shop;host=localhost;charset=utf8'; //DB接続コピペ
 $user='root';
@@ -62,6 +63,14 @@ foreach($cart as $key => $val);
 
 }
 $dbh=null;
+
+for($i=0;$i<$max;$i++)
+{
+    print $pro_name[$i];
+    print $pro_gazou[$i];
+    print $pro_price[$i].'円';
+    print '<br>';
+}
 
 }
 catch(Exception $e)
