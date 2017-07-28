@@ -36,9 +36,12 @@ $pro_code=$_GET['procode'];
 if(isset($_SESSION['cart'])==true)
 {
     $cart=$_SESSION['cart'];
+    $kazu=$_SESSION['kazu'];
 }
 $cart[]=$pro_code;
+$kazu[]=1;
 $_SESSION['cart']=$cart;
+$_SESSION['kazu']=$kazu;
 
 }
 catch(Exception $e)
@@ -51,7 +54,6 @@ catch(Exception $e)
 
 カートに追加しました。<br>
 <br>
-<?php var_dump($cart);?>
 
 <a href="shop_list.php"> 商品一覧に戻る </a>
 </body>
