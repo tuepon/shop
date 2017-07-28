@@ -41,7 +41,7 @@ $password='123456';
 $dbh=new PDO($dsn,$user,$password);
 $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-foreach($cart as $key => $val);
+foreach($cart as $key=>$val)
 {
     $sql='SELECT code,name,price,gazou FROM mst_product WHERE code=?';
     $stmt=$dbh->prepare($sql);
@@ -52,7 +52,7 @@ foreach($cart as $key => $val);
 
     $pro_name[]=$rec['name'];
     $pro_price[]=$rec['price'];
-    if($rec['gazou'])=='')
+    if($rec['gazou']=='')
     {
         $pro_gazou[]='';
     }
