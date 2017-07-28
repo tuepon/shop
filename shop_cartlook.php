@@ -31,12 +31,18 @@ else
 try
 {
 
-//$pro_code=$_GET['procode'];
-$cart=$_SESSION['cart'];
-$kazu=$_SESSION['kazu'];
-$max=count($cart);
+if(isset($_SESSION['cart'])==true) //カートが最初から空っぽのとき対策
+{
+    $cart=$_SESSION['cart'];
+    $kazu=$_SESSION['kazu'];
+    $max=count($cart);
+}
+else
+{
+    $max=0;
+}
 
-if($max==0)
+if($max==0) //カートが存在しないとき用に強制的に0を入れる
 {
     print 'カートに商品が入っていません。<br>';
     print '<br>';
