@@ -36,6 +36,11 @@ $cart=$_SESSION['cart'];
 $kazu=$_SESSION['kazu'];
 $max=count($cart);
 
+if($max==0)
+{
+    print 'カートに商品が入っていません。<br>';
+}
+
 $dsn='mysql:dbname=shop;host=localhost;charset=utf8'; //DB接続コピペ
 $user='root';
 $password='123456';
