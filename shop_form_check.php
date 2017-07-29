@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>ろくまる農園</title>
+    <title>フォームチェック</title>
   </head>
 <body>
 <?php
@@ -22,18 +22,38 @@ if($onamae=='')
 {
 	print 'お名前が入力されていません。<br><br>';
 }
+else
+{
+	print ' お名前 <br>';
+	print $onamae;
+	print '<br><br>';
+}
 
-if(preg_match('/^[\w\-\.]+\@[\w\-\.]+\.([a-z]+)\z/',$email)==0)
+if(preg_match('/\A[\w\-\.]+\@[\w\-\.]+\.([a-z]+)\z/',$email)==0)
 {
 	print 'メールアドレスを正確に入力してください。<br><br>';
 }
+else
+{
+	print ' メールアドレス <br>';
+	print $email;
+	print '<br><br>';
+}
 
-if(preg_match('/^[0-9]+\z/',$postal1)==0)
+if(preg_match('/\A[0-9]+\z/',$postal1)==0)
 {
 	print '郵便番号は半角数字で入力してください。<br><br>';
 }
+else
+{
+	print ' 郵便番号 <br>';
+	print $postal1;
+	print '-';
+	print $postal2;
+	print '<br><br>';
+}
 
-if(preg_match('/^[0-9]+\z/',$postal2)==0)
+if(preg_match('/\A[0-9]+\z/',$postal2)==0)
 {
 	print '郵便番号は半角数字で入力してください。<br><br>';
 }
@@ -42,10 +62,22 @@ if($address=='')
 {
 	print '住所が入力されていません。<br><br>';
 }
-
-if(preg_match('/^\d{2,5}-?\d{2,5}-?\d{4,5}\z/',$tel)==0)
+else
 {
-	print '電話番号を正確に入力しでください。<br><br>';
+	print ' 住所 <br>';
+	print $address;
+	print '<br><br>';
+}
+
+if(preg_match('/\A\d{2,5}-?\d{2,5}-?\d{4,5}\z/',$tel)==0)
+{
+	print '電話番号を正確に入力してください。<br><br>';
+}
+else
+{
+	print ' 電話番号 <br>';
+	print $tel;
+	print '<br><br>';
 }
 
 print '<form method="post" action="shop_form-done.php">';
