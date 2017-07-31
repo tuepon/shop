@@ -54,13 +54,14 @@ for($i=0;$i<$max;$i++)
 {
 	$sql='SELECT name,price FROM mst_product WHERE code=?';
     $stmt=$dbh->prepare($sql);
-    $data[0]=$val;
+    $data[0]=$cart[$i]; //修正170731 $val→$cart[$i]
     $stmt->execute($data);
 
     $rec=$stmt->fetch(PDO::FETCH_ASSOC);
 
 	$name=$rec['name'];
 	$price=$rec['price'];
+	$kakaku[]=$price; //商品明細用に追加 修正　$kakaku→$kakaku[]
 	$suryo=$kazu[$i];
 	$shokei=$price*$suryo;
 }	
