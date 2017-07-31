@@ -66,6 +66,11 @@ for($i=0;$i<$max;$i++)
 	$shokei=$price*$suryo;
 }	
 
+//テーブルロック
+$sql='LOCK_TABLES dat_sales WRITE,dat_sales_product WRITE';
+$stmt=$dbh->prepare($sql);
+$stmt->execute();
+
 //注文データを追加
 $sql='INSERT INTO dat_sales(code_member,name,email,postal1,postal2,address,tel)VALUES(?,?,?,?,?,?,?)';
 $stmt=$dbh->prepare($sql);
@@ -98,6 +103,11 @@ for($i=0;$i<$max;$i++)
 	$data[]=$kazu[$i];
 	$stmt->execute($data);
 }
+
+//ロック解除
+$sql='UNLOCK TABLES';
+$stmt=$dbh->prepare($sql);
+$stmt->execute();
 
 $dbh=null;
 
@@ -140,5 +150,8 @@ catch(Exception $e)
 }
 
 ?>
+
+<br>
+<a href="shop_list.php"> 商品画面へ </a>
 </body>
 </html>
