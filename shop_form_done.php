@@ -68,17 +68,22 @@ for($i=0;$i<$max;$i++)
 	$kakaku[]=$price; //商品明細用に追加 修正　$kakaku→$kakaku[]
 	$suryo=$kazu[$i];
 	$shokei=$price*$suryo;
+	
+	$honbun.=$name.'';
+	$honbun.=$price.'円 x';
+	$honbun.=$suryo.'個 =';
+	$honbun.=$shokei."円\n";
 }	
 
 //テーブルロック
-$sql='LOCK_TABLES dat_sales WRITE,dat_sales_product WRITE,dat_member WRITE';
+$sql='LOCK TABLES dat_sales WRITE,dat_sales_product WRITE,dat_member WRITE';
 $stmt=$dbh->prepare($sql);
 $stmt->execute();
 
 $lastmembercode=0;
 if($chumon=='chumontouroku')
 {
-	$sql='INSERT INTO dat_member(password,name,email,postal1,postal2,address,tel,danjo,born)VALUES(?,?,?,?,?,?,?,?,?)';
+	$sql='INSERT INTO dat_member(password,name,email,postal1,postal2,address,tel,danjo,birth)VALUES(?,?,?,?,?,?,?,?,?)';
 	$stmt=$dbh->prepare($sql);
 	$data=array();
 	$data[]=md5($pass);
