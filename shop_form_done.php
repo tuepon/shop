@@ -151,9 +151,26 @@ $stmt->execute();
 
 $dbh=null;
 
+if($chumon=='chumontouroku')
+{
+	print '会員登録が完了いたしました。<br>';
+	print '次回からメールアドレスとパスワードでログインしてください。<br>';
+	print 'ご注文が簡単にできるようになります。<br>';
+	print '<br>';
+}
+
 $honbun.="送料は無料です。\n";
 $honbun.="-----------\n";
 $honbun.="\n";
+
+if($chumon=='chumontouroku')
+{
+	$honbun.="会員登録が完了いたしました。\n";
+	$honbun.="次回からメールアドレスとパスワードでログインしてください。\n";
+	$honbun.="ご注文が簡単にできるようになります。\n";
+	$honbun.="\n";
+}
+	
 $honbun.="代金は以下の口座にお振込みください。\n";
 $honbun.="ろくまる銀行　やさい支店　普通口座　1234567\n";
 $honbun.="入金確認が取れ次第、梱包、発送させていただきます。\n";
